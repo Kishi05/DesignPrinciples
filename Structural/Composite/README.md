@@ -84,7 +84,7 @@ chart.PrintChart();
 ---
 
 ## 🖨️ Sample Output
-
+```
 Employee : Mr.Sam
 Dependents :
 	Mrs.June { Spouse }
@@ -94,7 +94,7 @@ Dependents :
 	Mrs.Rose { Spouse }
 	Mrs.Mary { Mother }
 	Master.John { Child }
-
+```
 ---
 
 ## 📌 Design Pattern Benefits Used
