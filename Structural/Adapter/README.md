@@ -80,7 +80,7 @@ Cloud :
 
 ## 👨‍💻 Author
 
-Designed and implemented by **Snaps M**  
+Designed and implemented by **Kishore**  
 Senior .NET Full-Stack Developer  
 System Design & Clean Architecture Enthusiast  
 [GitHub: @Kishi05](https://github.com/Kishi05)
