@@ -80,4 +80,5 @@ Cloud :
 
 ## 👨‍💻 Author
 
-Built by Kishore — showcasing mastery of clean architecture with design patterns.
+Implemented by Kishi
+Focused on applying object-oriented design principles for modular, maintainable, and scalable systems.
