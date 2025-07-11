@@ -23,6 +23,10 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+**/.[Vv]s/
+**/[Bb]in/
+**/[Oo]bj/
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
