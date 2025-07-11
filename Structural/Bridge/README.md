@@ -122,6 +122,35 @@ Cloud :
 
 ---
 
+## 🧩 Notes on Bridge Pattern (📍Clarifying the Confusion)
+
+🤯 What was taught vs What is correct?
+
+❌ What gets misunderstood:
+
+- Many tutorials (and even courses) present Bridge and Adapter patterns almost interchangeably or confuse them with layered service delegation.
+- For example, some courses might show:
+> "Create a controller that calls a service and based on a type sends the right message — that’s Bridge!"
+
+🔎 This is actually Facade or Adapter with Factory, not Bridge.
+
+---
+
+## ✅ What Bridge Really Is (as used here):
+
+Bridge is about separating abstraction from implementation so they can vary independently.
+
+In our case:
+
+- The Abstraction is WelcomeMessage, Credentials, Benefits (types of messages to be sent).
+- The Implementation is Email, SMS, CloudMessage (channels through which they're sent).
+- These two evolve separately, yet interact via INotification.
+
+You can add new message types without modifying the delivery classes, and new delivery channels without modifying the messages.
+That's the heart of the Bridge Pattern.
+
+---
+
 ## 👨‍💻 Author
 
 Designed and implemented by **Kishore**  
