@@ -80,5 +80,9 @@ Cloud :
 
 ## 👨‍💻 Author
 
-Implemented by Kishi
+Designed and implemented by **Snaps M**  
+Senior .NET Full-Stack Developer  
+System Design & Clean Architecture Enthusiast  
+[GitHub: @Kishi05](https://github.com/Kishi05)
+
 Focused on applying object-oriented design principles for modular, maintainable, and scalable systems.
