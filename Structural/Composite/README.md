@@ -87,13 +87,13 @@ chart.PrintChart();
 ```
 Employee : Mr.Sam
 Dependents :
-	Mrs.June { Spouse }
+	Mrs.June [Spouse]
 
 Employee : Mr.Jack
 Dependents :
-	Mrs.Rose { Spouse }
-	Mrs.Mary { Mother }
-	Master.John { Child }
+	Mrs.Rose [Spouse]
+	Mrs.Mary [Mother]
+	Master.John [Child]
 ```
 ---
 
