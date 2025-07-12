@@ -18,7 +18,7 @@ namespace COR
                 approver = value;
             }
         }
-        public async void ApplyLeaveRequest(int numberOfDays)
+        public void ApplyLeaveAsync(int numberOfDays)
         {
             Approver approver = new TLProxy();
             Manager manager = new Manager();
@@ -29,36 +29,29 @@ namespace COR
 
             Approver = approver;
 
-            await approver.ApproveLeave(numberOfDays);
+            _ = approver.ApproveLeave(numberOfDays);
         }
-            
+
         public void GetStatus()
         {
-            var realApprover = approver.GetRealApprover();
-            Status? result = realApprover.isRequestApproved();
-            switch (result)
+            Console.WriteLine(Approver.GetStatus());
+        }
+
+        public void PrintStatus()
+        {
+            Console.WriteLine("\n--- Approval Trail ---");
+            if (Approver.CurrentStatus().Any())
             {
-                case Status.Approved:
-                    Console.WriteLine("Request Approved.");
-                    break;
-                case Status.Rejected:
-                    Console.WriteLine("Request Rejected.");
-                    break;
-                case Status.Pending:
-                    Console.WriteLine("Request Pending.");
-                    break;
-                default:
-                    Console.WriteLine("In Queue. Yet to Initiate");
-                    break;
+                foreach (var kv in Approver.CurrentStatus())
+                {
+                    Console.WriteLine($"{kv.Key}: {kv.Value}");
+                }
             }
-
-            Dictionary<string, string> status = realApprover.CurrentStatus();
-
-            foreach (var state in status)
+            else
             {
-                Console.WriteLine($"{state.Key} => {state.Value}");
+                Console.WriteLine("Still Pending..");
             }
-
+                Console.WriteLine($"\nCurrent Status: {Approver.GetStatus()}");
         }
 
     }

@@ -5,24 +5,29 @@ namespace COR
     public class TLProxy : Approver
     {
         protected Approver realApprover;
-        public async override Task<Status> ApproveLeave(int numberOfDays)
+        private bool isInitialized = false;
+        private Task backgroundTask;
+        public override Task<Status> ApproveLeave(int numberOfDays)
         {
-            if(isApproved != null)
+            if (!isInitialized)
             {
-                return isApproved.Value;
-            }
-            else if (realApprover == null)
-            {
-                _ = Task.Run(async () =>
+                isInitialized = true;
+                backgroundTask = Task.Run(async () =>
                 {
+                    await Task.Delay(1000);
                     realApprover = new TL();
-                    approval.Add("Main", "Request Initiated");
                     realApprover.SetNextApprover(this.NextApprover);
-                    FacadeApproverObj = realApprover;
-                    await realApprover.ApproveLeave(numberOfDays);
+                    approval.Add("Main", "Request Initiated");
+                    Status result = await realApprover.ApproveLeave(numberOfDays);
+                    foreach (var kv in realApprover.CurrentStatus())
+                    {
+                        approval[kv.Key] = kv.Value;
+                    }
+                    finalStatus = result;
                 });
             }
-            return Status.Pending;
+
+            return Task.FromResult(Status.Pending);
         }
     }
 }

@@ -4,24 +4,38 @@ namespace COR
 {
     public class TL : Approver
     {
-        public override Task<Status> ApproveLeave(int numberOfDays)
+        public override async Task<Status> ApproveLeave(int numberOfDays)
         {
-            Task.Delay(1000);
+            await Task.Delay(3000);
             if(numberOfDays == 1)
             {
                 approval.Add("TL", "Approved");
-                isApproved = Status.Approved;
-                return Task.FromResult(Status.Approved);
+                finalStatus = Status.Approved;
+                return finalStatus;
             }
             else if(NextApprover != null)
             {
-                isApproved = Status.Pending;
-                approval.Add("TL", "Need Manager Approval");
-                return NextApprover.ApproveLeave(numberOfDays);
+                approval.Add("TL", "Escalated to Manager");
+                Status result = await NextApprover.ApproveLeave(numberOfDays);
+                MergeApproval(result);
+                finalStatus = result;
+                return finalStatus;
             }
-            isApproved = Status.Rejected;
             approval.Add("TL", "Request Rejected");
-            return Task.FromResult(Status.Rejected);
+            finalStatus = Status.Rejected;
+            return finalStatus;
         }
+
+        private void MergeApproval(Status result)
+        {
+            if (NextApprover != null)
+            {
+                foreach (var kv in NextApprover.CurrentStatus())
+                {
+                    approval[kv.Key] = kv.Value;
+                }
+            }
+        }
+
     }
 }

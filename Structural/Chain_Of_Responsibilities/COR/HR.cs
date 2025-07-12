@@ -4,17 +4,18 @@ namespace COR
 {
     public class HR : Approver
     {
-        public override Task<Status> ApproveLeave(int numberOfDays)
+        public override async Task<Status> ApproveLeave(int numberOfDays)
         {
+            await Task.Delay(3000);
             if (numberOfDays < 5)
             {
-                isApproved = Status.Approved;
                 approval.Add("HR", "Approved");
-                return Task.FromResult(Status.Approved);
+                finalStatus = Status.Approved;
+                return finalStatus;
             }
-            isApproved = Status.Rejected;
             approval.Add("HR", "Request Rejected");
-            return Task.FromResult(Status.Rejected);
+            finalStatus = Status.Rejected;
+            return finalStatus;
         }
     }
 }
