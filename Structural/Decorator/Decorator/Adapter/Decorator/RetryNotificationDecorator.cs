@@ -26,7 +26,8 @@ namespace Decorator.Adapter.Decorator
                 try
                 {
                     _notification.SendMessage(user, message);
-                    throw new NotificationFailureException();
+                    //throw new NotificationFailureException(); //Uncomment this line to test retry logic
+                    break;
                 }
                 catch (NotificationFailureException ex)
                 {
