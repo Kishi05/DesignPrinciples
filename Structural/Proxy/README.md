@@ -133,3 +133,12 @@ Console.WriteLine(final.ToString());  // Now returns: "Confirmation : AGSUY8K6DI
 - Virtual Proxy: Delays object creation until absolutely needed.
 - Remote Proxy: Represents an object in another address space.
 - Protection Proxy: Adds access control.
+
+---
+
+## 👨‍💻 Author
+
+Designed and implemented by **Kishore**  
+Senior .NET Full-Stack Developer  
+System Design & Clean Architecture Enthusiast  
+[GitHub: @Kishi05](https://github.com/Kishi05)
