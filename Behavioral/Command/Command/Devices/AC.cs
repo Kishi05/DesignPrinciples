@@ -1,33 +1,25 @@
 ﻿using Command.Devices.Interface;
-using Command.Entities;
 
 namespace Command.Devices
 {
-    public class AC : ISHACommand
+    public class AC : IDevices
     {
-        public Common common { get; set; }
-
-        public AC() {
-            common = new Common();
-            common.Appliance = "AC";
+        public async Task SetTimer(int minutes)
+        {
+            await Task.Delay(1000);
+            Console.WriteLine($"AC - Timer Set to : {DateTime.UtcNow.AddMinutes(minutes)}");
         }
 
-        public void SetTimer(int minutes)
+        public async Task TurnOFF()
         {
-            common.CommandOption = Enum.CommandOption.SetTimer;
-            common.Timer = DateTime.UtcNow.AddMinutes(minutes);
+            await Task.Delay(1000);
+            Console.WriteLine("AC - Power OFF");
         }
 
-        public void TurnOFF()
+        public async Task TurnON()
         {
-            common.CommandOption = Enum.CommandOption.TurnOFF;
-            common.Power = false;
-        }
-
-        public void TurnON()
-        {
-            common.CommandOption = Enum.CommandOption.TurnON;
-            common.Power = true;
+            await Task.Delay(1000);
+            Console.WriteLine("AC - Power ON");
         }
     }
 }

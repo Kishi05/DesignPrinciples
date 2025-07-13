@@ -2,7 +2,7 @@
 {
     public static class BGWorker
     {
-        public static async void BgRunner()
+        public static async Task BgRunner()
         {
             _ = Task.Run(async () =>
             {
@@ -14,7 +14,7 @@
                         while (Invoker.Invoker.GetList().Any())
                         {
                             var item = Invoker.Invoker.GetList().Dequeue();
-                            Invoker.Invoker.ExecuteCMD(item);
+                            await item.Execute();
                         }
                     }
                 } while (true);

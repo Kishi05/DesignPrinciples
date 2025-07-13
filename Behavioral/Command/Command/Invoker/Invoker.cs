@@ -1,51 +1,53 @@
-﻿using Command.Devices.Interface;
+﻿using Command.Command.Interface;
 
 namespace Command.Invoker
 {
     public static class Invoker
     {
-        public static Queue<ISHACommand> cmdQueue = new();
-        public static ISHACommand? undoCmd;
-        public static void ExecuteCMD(ISHACommand command)
-        {
-            string cmd = $"{command.common.Appliance} - ";
-            switch (command.common.CommandOption)
-            {
-                case Enum.CommandOption.TurnON:
-                    cmd += "Turned ON";
-                    break;
-                case Enum.CommandOption.TurnOFF:
-                    cmd += "Turned OFF";
-                    break;
-                case Enum.CommandOption.SetTimer:
-                    cmd += $"Timer Set to : {command.common.Timer}";
-                    break;
-                default:
-                    throw new InvalidOperationException("Invalid Operation");
-            }
+        public static Queue<ICommandLine> cmdQueue = new();
+        public static Stack<ICommandLine> undoCmd = new();
 
-            Console.WriteLine(cmd);
-        }
-
-        public static void AddCommand(ISHACommand command)
+        public static void AddCommand(ICommandLine command)
         {
             cmdQueue.Enqueue(command);
         }
 
-        public static Queue<ISHACommand> GetList()
+        public static Queue<ICommandLine> GetList()
         {
             return cmdQueue;
         }
 
         public static void Undo()
         {
-            undoCmd = cmdQueue.Dequeue();
+            if (cmdQueue.Count == 0)
+                return;
+
+            // Remove last command from queue (FIFO queue -> remove last enqueued item)
+            var tempQueue = new Queue<ICommandLine>();
+            ICommandLine? lastCommand = null;
+
+            while (cmdQueue.Count > 0)
+            {
+                var cmd = cmdQueue.Dequeue();
+                if (cmdQueue.Count == 0)
+                {
+                    lastCommand = cmd;
+                    break;
+                }
+                tempQueue.Enqueue(cmd);
+            }
+
+            if (lastCommand != null)
+                undoCmd.Push(lastCommand);
+
+            // Restore remaining queue
+            cmdQueue = tempQueue;
         }
 
         public static void Redo()
         {
-            if(undoCmd != null)
-                cmdQueue.Enqueue(undoCmd);
+            if (undoCmd.Any())
+                cmdQueue.Enqueue(undoCmd.Pop());
         }
     }
 }
