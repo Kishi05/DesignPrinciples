@@ -2,5 +2,5 @@
 
 Message msg = new Message("Sam");
 
-msg.AddReceiver("Jackie").AddReceiver("Mani")
+msg.AddReceiver("Jackie")
     .Send("Hi !");
