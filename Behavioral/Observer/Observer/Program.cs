@@ -1,10 +1,6 @@
-﻿using Observer.Reciever;
-using Observer.Sender;
-using Observer.Sender.Abstract;
+﻿using Observer.Facade;
 
-SenderAbstract sender = new Sender("Sam");
+Message msg = new Message("Sam");
 
-Receiver receiver = new Receiver("Jackie");
-
-sender.Subscribe(receiver);
-sender.Send("Hi!");
+msg.AddReceiver("Jackie").AddReceiver("Mani")
+    .Send("Hi !");

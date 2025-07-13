@@ -1,4 +1,4 @@
-﻿using Observer.Sender.Abstract;
+﻿using Observer.From.Abstract;
 
 namespace Observer.Reciever.Abstract
 {

@@ -1,6 +1,6 @@
 ﻿using Observer.Reciever.Abstract;
 
-namespace Observer.Sender.Abstract
+namespace Observer.From.Abstract
 {
     public abstract class SenderAbstract
     {

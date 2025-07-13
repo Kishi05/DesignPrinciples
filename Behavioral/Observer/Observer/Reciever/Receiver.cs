@@ -1,12 +1,13 @@
 ﻿using Observer.Reciever.Abstract;
-using Observer.Sender.Abstract;
+using Observer.From.Abstract;
 
 namespace Observer.Reciever
 {
     public class Receiver : ReceiverAbstract
     {
-        private string _name;
 
+        protected string _name;
+        public event EventHandler<SenderAbstract> MessageReceived = null;
         public Receiver(string name)
         {
             _name = name;
@@ -20,11 +21,10 @@ namespace Observer.Reciever
 
         public override void Update(SenderAbstract sender)
         {
-            if (sender != null)
+            if (sender != null && MessageReceived != null)
             {
                 Console.WriteLine($"Receiver : {Name}");
-                Console.WriteLine($" ------------  Message  ------------ ");
-                Console.WriteLine($"{sender.Name} : {sender.Message}");
+                MessageReceived(this, sender);
             }
         }
     }
