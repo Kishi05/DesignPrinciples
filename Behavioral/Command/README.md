@@ -196,3 +196,12 @@ User
 - Implement async-safe patterns in C#
 - Design undo/redo stacks in queue-based systems
 - Apply SOLID principles and clean architecture
+
+---
+
+## 👨‍💻 Author
+
+Designed and implemented by **Kishore**  
+Senior .NET Full-Stack Developer  
+System Design & Clean Architecture Enthusiast  
+[GitHub: @Kishi05](https://github.com/Kishi05)
