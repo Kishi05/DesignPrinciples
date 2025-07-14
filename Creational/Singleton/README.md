@@ -1,4 +1,4 @@
-﻿# Singleton Design Pattern – LogConsole
+﻿# 📄 Singleton Design Pattern – LogConsole
 
 ## 📌 Pattern Type
 **Creational Design Pattern**
