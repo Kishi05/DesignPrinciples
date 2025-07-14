@@ -1,6 +1,6 @@
-﻿# Builder Design Pattern — Payment Builder Demo
+﻿# 🧠 Builder Design Pattern — Payment Builder Demo
 
-## Pattern Category
+## 📌 Pattern Category
 Creational Design Pattern
 
 ## Intent
@@ -9,7 +9,7 @@ Separate the construction of a complex object from its representation so that th
 ## Overview
 This demo simulates building different payment objects (Credit Card, UPI) via fluent builders that collect input step-by-step before producing immutable payment instances.
 
-## Key Components
+## 🧱 Key Components
 
 | Class                  | Role                               |
 |------------------------|----------------------------------|
