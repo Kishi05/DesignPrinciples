@@ -46,30 +46,38 @@ IteratorPattern/
 
 ```mermaid
 classDiagram
-    class IIterator<T> {
-        +T? First()
-        +T? Next()
-        +T? CurrentNode()
-        +void Reset()
+    class IIterator {
+        +CurrentNode()
+        +First()
+        +Next()
+        +Reset()
     }
 
-    class Iterators<T> {
-        -List<T> _items
+    class Iterators {
+        -List items
         -int index
-        +T? First()
-        +T? Next()
-        +T? CurrentNode()
-        +void Reset()
+        +CurrentNode()
+        +First()
+        +Next()
+        +Reset()
     }
 
-    class TCollection<T> {
-        -List<T> _items
-        +TCollection<T> Add(T item)
-        +IIterator<T> GetIterator()
+    class TCollection {
+        -List items
+        +Add(item)
+        +GetIterator()
     }
 
-    IIterator<T> <|.. Iterators<T>
-    TCollection<T> --> Iterators<T>
+    class User {
+        +Guid Id
+        +string Name
+        +ToString()
+    }
+
+    IIterator <|.. Iterators
+    Iterators <-- TCollection
+    TCollection --> User
+
 ```
 
 ---
