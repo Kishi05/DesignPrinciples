@@ -1,6 +1,6 @@
-﻿# Prototype Design Pattern — User Cloning Demo
+﻿# 🧠 Prototype Design Pattern — User Cloning Demo
 
-## Pattern Category
+## 📌 Pattern Category
 Creational Design Pattern
 
 ## Intent
@@ -9,7 +9,7 @@ Specify the kinds of objects to create using a prototypical instance, and create
 ## Overview
 This demo shows cloning of `User` objects with shallow and deep copies. The shallow copy duplicates the reference to nested objects, while the deep copy creates full independent copies to avoid unintended side-effects.
 
-## Key Components
+## 🧱 Key Components
 
 | Class        | Role                                     |
 |--------------|------------------------------------------|
