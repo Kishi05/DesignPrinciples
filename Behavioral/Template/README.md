@@ -45,7 +45,6 @@ Think of a **report generation process**:
 ```
 ---
 
-### Mermaid UML (for markdown renderers that support it)
 ```mermaid
 classDiagram
     class ReportBase {
